@@ -39,10 +39,11 @@ export class FaceSnapsService {
     return this.faceSnaps;
   }
 
-  snapFaceSnapById(faceSnapId: number): void {
+  snapFaceSnapById(faceSnapId: number): SnapModel {
     const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
     if (faceSnap) {
       faceSnap.snaps++;
+      return this.faceSnaps[faceSnapId];
     } else {
       throw new Error('FaceSnap not found!');
     }

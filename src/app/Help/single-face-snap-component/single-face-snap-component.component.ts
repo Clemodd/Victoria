@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SnapModel} from "../models/snap.model";
 import {FaceSnapsService} from "../services/face-snaps.service";
 import {ActivatedRoute} from "@angular/router";
@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./single-face-snap-component.component.scss']
 })
 export class SingleFaceSnapComponentComponent implements OnInit {
-  @Input() snap! : SnapModel;
+  snap! : SnapModel;
   buttonText!: String;
 
   constructor(private faceSnapService : FaceSnapsService,
@@ -17,6 +17,8 @@ export class SingleFaceSnapComponentComponent implements OnInit {
 
   ngOnInit(): void {
     this.buttonText = "👍";
+    const snapId = +this.route.snapshot.params['id'];
+    this.snap = this.faceSnapService.snapFaceSnapById(snapId);
   }
 
   onSnap(){
