@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComposantsComponent } from './composants/composants.component';
+import { ComposantsComponent } from './Help/composants/composants.component';
+import {registerLocaleData} from "@angular/common";
+import * as fr from '@angular/common/locales/fr';
+import { FaceSnapListComponent } from './Help/face-snap-list/face-snap-list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComposantsComponent
+    ComposantsComponent,
+    FaceSnapListComponent
   ],
   imports: [
     BrowserModule,
@@ -17,4 +21,8 @@ import { ComposantsComponent } from './composants/composants.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    registerLocaleData(fr.default);
+  }
+}
