@@ -1,0 +1,15 @@
+<div class="face-snap-card" [ngClass]="{ snapped: buttonText === '👎' }">
+  <h2>{{ snap.title }}</h2>
+  <p>Mis en ligne le {{ snap.createdDate }}</p>
+  <img [src]="snap.imageUrl">
+  <p>{{ snap.description }}</p>
+  <p *ngIf="snap.location">Prise à {{ snap.location }}</p>
+  <p>Le texte change de couleur selon les likes (de + en + vert)</p>
+  <p>
+    {{ snap.snaps }}
+    <button (click)="onSnap()">{{buttonText}}</button>
+    <button (click)="onSnap()">
+      <span [ngStyle]="{ color: 'rgb(0, ' + snap.snaps + ', 0)' }">🤌 {{ snap.snaps }}</span>
+    </button>
+  </p>
+</div>
